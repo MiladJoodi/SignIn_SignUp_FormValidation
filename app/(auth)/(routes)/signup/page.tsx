@@ -99,7 +99,7 @@ const Page = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem className="space-y-0 mb-2">
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>Name</FormLabel>
                       <FormControl>
                         <Input placeholder="Joodi" {...field} />
                       </FormControl>
