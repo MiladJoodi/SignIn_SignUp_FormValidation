@@ -81,8 +81,8 @@
   @apply h-screen w-full flex justify-center items-center;
 }
 .formWrapper {
-  @apply flex items-center border bg-primary shadow-md rounded-lg overflow-hidden justify-center w-[20rem]
- mx-6 md:w-auto my-4;
+  @apply flex items-center border bg-primary shadow-md rounded-lg overflow-hidden justify-center w-full h-full md:h-auto
+  md:w-auto my-4;
 }
 .signUpWrapper .left,
 .signInWrapper .left{
@@ -98,7 +98,7 @@
 }
 .signUpWrapper .right,
 .signInWrapper .right{
-  @apply m-4 p-4 md:w-1/2 bg-white rounded-lg
+  @apply m-4 p-4 md:w-1/2 w-[90%] bg-white rounded-lg
 }
 .socialFormBtn{
   @apply rounded-full h-[2.5rem] w-[2.5rem] p-0 mx-2 border-zinc-400
