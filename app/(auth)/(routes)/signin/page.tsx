@@ -16,39 +16,22 @@ import { Input } from "@/components/ui/input";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa6";
 import Link from "next/link";
 
-const signUpSchema = z
+const signInSchema = z
   .object({
-    name: z
-      .string()
-      .min(2, "Name should have at least 2 characters.")
-      .max(50, "Name should not exceed 50 characters")
-      .refine(
-        (value) => /^[a-zA-Z]+[-'s]?[a-zA-Z ]+$/.test(value),
-        "Name should contain only alphabets."
-      ),
     email: z.string().email("Email must be valid"),
     password: z.string().min(6, "Password should have at least 6 characters."),
-    confirmPassword: z
-      .string()
-      .min(6, "Password should have at least 6 characters."),
   })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Password does not match",
-    path: ["confirmPassword"],
-  });
 
 const Page = () => {
-  const form = useForm<z.infer<typeof signUpSchema>>({
-    resolver: zodResolver(signUpSchema),
+  const form = useForm<z.infer<typeof signInSchema>>({
+    resolver: zodResolver(signInSchema),
     defaultValues: {
-      name: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof signUpSchema>) {
+  function onSubmit(values: z.infer<typeof signInSchema>) {
     console.log(values);
   }
 
@@ -58,13 +41,13 @@ const Page = () => {
         <div className="formWrapper">
           {/* Left */}
           <div className="left">
-            <h3 className="title">Welcome Back!</h3>
+            <h3 className="title">Hello Friends!</h3>
             <p>
-              To keep connected with us please login with your personal info
+              Enter your personal details and start journey with us
             </p>
-            <Link href={"/signin"}>
+            <Link href={"/signup"}>
               <Button className="border-zinc-500 text-zinc-300 hover:border-zinc-200 hover:text-zinc-100 transition-colors border rounded-full px-8">
-                Sign In
+                Sign Up
               </Button>
             </Link>
           </div>
@@ -72,7 +55,7 @@ const Page = () => {
           {/* Right */}
           <div className="right">
             <h3 className="text-center text-2xl font-semibold">
-              Register Here
+              Sign In Here
             </h3>
             <div className="socialSignUpOptions">
               <Button variant={"outline"} className="socialFormBtn">
@@ -91,22 +74,7 @@ const Page = () => {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8"
               >
-                {/* Name Field */}
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem className="space-y-0 mb-2">
-                      <FormLabel>Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Joodi" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
                 {/* Email Field */}
                 <FormField
                   control={form.control}
@@ -130,20 +98,6 @@ const Page = () => {
                       <FormLabel>Password</FormLabel>
                       <FormControl>
                       <Input placeholder="********" type="password" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {/* Confirm Password */}
-                <FormField
-                  control={form.control}
-                  name="confirmPassword"
-                  render={({ field }) => (
-                    <FormItem className="space-y-0 mb-2">
-                      <FormLabel>Confirm Password</FormLabel>
-                      <FormControl>
-                        <Input placeholder="********" type="password" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
