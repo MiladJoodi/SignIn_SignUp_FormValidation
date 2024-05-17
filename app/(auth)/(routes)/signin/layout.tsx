@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
-    title: 'Sign in | ',
+    title: 'Sign in | Demo',
     description: 'Joodi.me'
 }
 
