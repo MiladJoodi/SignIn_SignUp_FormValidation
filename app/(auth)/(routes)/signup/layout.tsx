@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const SignUpLayout = ({children} : {children: React.ReactNode}) =>{
     return(
         <>
-            <NextTopLoader color="000" showSpinner={false} />
+            <NextTopLoader color="#000" showSpinner={false} />
             {children}
         </>
     )
