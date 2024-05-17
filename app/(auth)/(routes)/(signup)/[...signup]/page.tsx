@@ -58,7 +58,7 @@ const Page = () => {
         <div className="formWrapper">
           {/* Left */}
           <div className="left">
-            <h3>Welcome Back!</h3>
+            <h3 className="title">Welcome Back!</h3>
             <p>
               To keep connected with us please login with your personal info
             </p>
@@ -93,11 +93,12 @@ const Page = () => {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-8"
               >
+                {/* Name Field */}
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="space-y-0 mb-2">
                       <FormLabel>Username</FormLabel>
                       <FormControl>
                         <Input placeholder="Joodi" {...field} />
@@ -106,6 +107,51 @@ const Page = () => {
                     </FormItem>
                   )}
                 />
+                {/* Email Field */}
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0 mb-2">
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="example@gmail.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {/* Password Field */}
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0 mb-2">
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                      <Input placeholder="********" type="password" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {/* Confirm Password */}
+                <FormField
+                  control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0 mb-2">
+                      <FormLabel>Confirm Password</FormLabel>
+                      <FormControl>
+                        <Input placeholder="********" type="password" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full">
+                  Submit
+                </Button>
               </form>
             </Form>
           </div>
